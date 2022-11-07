@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  stablediffusion-finetune:
+    build: .
+    ports:
+    - 8080:8080
+    volumes:
+      - ./checkpoints/:/app/checkpoints
+      - ./notebooks/:/app/notebooks
+      - ./dataset/:/app/dataset
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
