@@ -5,19 +5,17 @@ RUN apt-get install ffmpeg libsm6 libxext6 wget  -y
 RUN apt-get -y install git
 RUN apt-get -y install gcc
 RUN apt-get -y install vim
-# RUN apt install pkg-config
+RUN apt install libopenmpi-dev -y
+RUN pip install mpi4py
+RUN apt install pkg-config
 # RUN apt-get install -y libopencv-dev
 
-RUN pip install -U pip setuptools
-RUN pip install tqdm jupyterlab ipywidgets ftfy regex
-RUN pip install git+https://github.com/openai/CLIP.git
-RUN pip install git+https://github.com/CompVis/taming-transformers.git
+
+RUN pip install -U pip setuptools wheel
+RUN pip install -U diffusers==0.9.0 transformers==4.25.1
+RUN pip install -U accelerate ftfy tensorboard modelcards
+RUN pip install jupyterlab ipywidgets
 
 WORKDIR /app
-COPY requirements.txt ./
-
-RUN pip install -r requirements.txt
-
-
-EXPOSE 8080
-ENTRYPOINT jupyter lab --ip=0.0.0.0 --allow-root --port=8080 --NotebookApp.token='' --NotebookApp.password=''
+EXPOSE 9999
+ENTRYPOINT jupyter lab --ip=0.0.0.0 --allow-root --port=9999 --NotebookApp.token='' --NotebookApp.password=''

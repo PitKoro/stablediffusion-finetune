@@ -3,10 +3,11 @@ services:
   stablediffusion-finetune:
     build: .
     ports:
-    - 8080:8080
+    - 7575:7575
     volumes:
       - ./checkpoints/:/app/checkpoints
       - ./notebooks/:/app/notebooks
+      - ./src/:/app/src
       - ./dataset/:/app/dataset
     deploy:
       resources:
