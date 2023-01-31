@@ -3,7 +3,7 @@ services:
   stablediffusion-finetune:
     build: .
     ports:
-    - 7575:7575
+    - 9999:9999
     volumes:
       - ./checkpoints/:/app/checkpoints
       - ./notebooks/:/app/notebooks

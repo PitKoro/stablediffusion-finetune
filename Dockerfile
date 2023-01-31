@@ -13,7 +13,7 @@ RUN apt install pkg-config
 
 RUN pip install -U pip setuptools wheel
 RUN pip install -U diffusers==0.9.0 transformers==4.25.1
-RUN pip install -U accelerate ftfy tensorboard modelcards
+RUN pip install -U accelerate ftfy tensorboard modelcards pycocotools datasets
 RUN pip install jupyterlab ipywidgets
 
 WORKDIR /app
